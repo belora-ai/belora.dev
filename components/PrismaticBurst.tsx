@@ -119,30 +119,12 @@ void main(){
     float amp = clamp(uDistort, 0.0, 50.0) * 0.15;
 
     mat3 rot3dMat = mat3(1.0);
-    if(uAnimType == 1){
-      vec3 ang = vec3(t * 0.31, t * 0.21, t * 0.17);
-      rot3dMat = rotZ(ang.z) * rotY(ang.y) * rotX(ang.x);
-    }
-    mat3 hoverMat = mat3(1.0);
-    if(uAnimType == 2){
-      vec2 m = uMouse * 2.0 - 1.0;
-      vec3 ang = vec3(m.y * 0.6, m.x * 0.6, 0.0);
-      hoverMat = rotY(ang.y) * rotX(ang.x);
-    }
 
     for (int i = 0; i < 44; ++i) {
         vec3 P = marchT * dir;
         P.z -= 2.0;
         float rad = length(P);
         vec3 Pl = P * (10.0 / max(rad, 1e-6));
-
-        if(uAnimType == 0){
-            Pl.xz *= M2;
-        } else if(uAnimType == 1){
-      Pl = rot3dMat * Pl;
-        } else {
-      Pl = hoverMat * Pl;
-        }
 
         float stepLen = min(rad - 0.3, n * jitterAmp) + 0.1;
 
@@ -158,13 +140,6 @@ void main(){
             sin(Pb.x + cos(Pb.y) * cos(Pb.z)) *
             sin(Pb.z + sin(Pb.y) * cos(Pb.x + t))
         );
-
-        if (uRayCount > 0) {
-            float ang = atan(Pb.y, Pb.x);
-            float comb = 0.5 + 0.5 * cos(float(uRayCount) * ang);
-            comb = pow(comb, 3.0);
-            rayPattern *= smoothstep(0.15, 0.95, comb);
-        }
 
         vec3 spectralDefault = 1.0 + vec3(
             cos(marchT * 3.0 + 0.0),

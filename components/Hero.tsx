@@ -33,13 +33,13 @@ export function Hero() {
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 1, ease: "easeOut" }}
-                    className="relative mb-8"
+                    className="relative mb-4"
                 >
                     <Image
                         src="/logo_full_text_white.svg"
                         alt={SITE_CONFIG.name}
-                        width={280}
-                        height={70}
+                        width={250}
+                        height={62.5}
                         priority
                         className="relative z-10"
                         style={{ filter: "drop-shadow(0 0 10px color-mix(in srgb, var(--primary), transparent 60%))" }}
@@ -50,8 +50,7 @@ export function Hero() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.3, duration: 0.8 }}
-                    // dont break the line
-                    className="mb-12 max-w-lg font-mono text-sm lg:text-lg tracking-tight text-muted-foreground"
+                    className="mb-10 max-w-lg font-mono text-xs md:text-sm lg:text-lg tracking-tight text-muted-foreground"
                 >
                     {SITE_CONFIG.tagline}
                 </motion.p>

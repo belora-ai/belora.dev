@@ -4,7 +4,7 @@ export const LAYOUT_CONFIG = {
     padding: "1.5rem", // matches px-6
   },
   navbar: {
-    height: "64px", // matches h-16
+    height: "58px", 
   },
 } as const;
 

@@ -9,7 +9,7 @@ export function Footer() {
 
   return (
     <footer className="fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-background/80 backdrop-blur-md">
-      <Container className="flex h-14 items-center justify-between">
+      <Container className="flex h-12 items-center justify-between">
         <span className="font-mono text-xs tracking-wider text-muted-foreground">
           © {currentYear} {SITE_CONFIG.name}
         </span>

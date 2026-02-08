@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Renderer, Program, Mesh, Triangle, Texture } from 'ogl';
+import { u } from 'framer-motion/client';
 
 type Offset = { x?: number | string; y?: number | string };
 type AnimationType = 'rotate' | 'rotate3d' | 'hover';
@@ -283,7 +284,9 @@ const PrismaticBurst = ({
       const w = container.clientWidth || 1;
       const h = container.clientHeight || 1;
       renderer.setSize(w, h);
-      program.uniforms.uResolution.value = [gl.drawingBufferWidth, gl.drawingBufferHeight];
+
+      const uResolutionWidth = w < 768 ? gl.drawingBufferWidth * 2.5 : gl.drawingBufferWidth;
+      program.uniforms.uResolution.value = [uResolutionWidth, gl.drawingBufferHeight];
     };
 
     let ro: ResizeObserver | null = null;

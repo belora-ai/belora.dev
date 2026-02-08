@@ -3,11 +3,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { NAV_LINKS } from "@/lib/constants/site";
+import { Container } from "@/components/layout/Container";
 
 export function Navbar() {
   return (
     <nav className="fixed left-0 right-0 top-0 z-40 border-b border-border bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+      <Container className="flex h-[var(--navbar-height)] items-center justify-start gap-10">
+
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="/logo_full_text_white.svg"
@@ -29,7 +31,7 @@ export function Navbar() {
             </Link>
           ))}
         </div>
-      </div>
+      </Container>
     </nav>
   );
 }

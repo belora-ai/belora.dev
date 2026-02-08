@@ -1,13 +1,14 @@
-import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
-import { Footer } from "@/components/Footer";
+import { AppShell } from "@/components/layout/AppShell";
+import { Container } from "@/components/layout/Container";
+import { Page } from "@/components/layout/Page";
 
 export default function Home() {
   return (
-    <main className="bg-black font-sans min-h-screen">
-      <Navbar />
-      <Hero />
-      <Footer />
-    </main>
+    <AppShell>
+      <Page className="bg-black">
+          <Hero />
+      </Page>
+    </AppShell>
   );
 }

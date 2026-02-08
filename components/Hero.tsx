@@ -4,12 +4,13 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 import { SITE_CONFIG } from "@/lib/constants/site";
-import PrismaticBurst from './PrismaticBurst';
-import RollingText from "./RollingText";
+import PrismaticBurst from './effects/PrismaticBurst';
+import RollingText from "./effects/RollingText";
+import { Container } from "./layout/Container";
 
 export function Hero() {
     return (
-        <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-background px-6">
+        <Container noGutter className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-background px-6">
             <div className="absolute w-full h-full">
                 <PrismaticBurst
                     animationType="rotate3d"
@@ -19,7 +20,7 @@ export function Hero() {
                     paused={false}
                     offset={{ x: -20, y: 0 }}
                     mixBlendMode="soft-light"
-                    colors={['#8c5cff', '#1e293b', '#79c0ff']}
+                    colors={['#ffe0c2', '#393028', '#e54d2e']}
                 />
             </div>
             <motion.div
@@ -49,7 +50,8 @@ export function Hero() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.3, duration: 0.8 }}
-                    className="mb-12 max-w-lg font-mono text-lg tracking-tight text-muted-foreground"
+                    // dont break the line
+                    className="mb-12 max-w-lg font-mono text-sm lg:text-lg tracking-tight text-muted-foreground"
                 >
                     {SITE_CONFIG.tagline}
                 </motion.p>
@@ -62,10 +64,10 @@ export function Hero() {
                 >
                     <RollingText
                         text={SITE_CONFIG.status}
-                        className="font-mono text-sm font-bold uppercase tracking-[0.3em] text-[var(--color-porcelain)]"
+                        className="font-mono text-sm font-bold uppercase tracking-[0.3em] text-primary select-none"
                     />
                 </motion.div>
             </motion.div>
-        </section>
+        </Container>
     );
 }
